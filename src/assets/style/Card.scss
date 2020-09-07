@@ -1,0 +1,15 @@
+.card {
+  color: #333;
+  display: flex;
+  width: 90%;
+  justify-content: space-evenly;
+  background-color: aliceblue;
+  border-radius: 20px;
+  transform: translateY(50px);
+} 
+
+@media ( max-width:380px ){
+  .card {
+    flex-direction: column;
+  } 
+}
