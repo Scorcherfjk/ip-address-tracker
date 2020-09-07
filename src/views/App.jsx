@@ -10,6 +10,11 @@ import '../assets/style/App.scss';
 
 const App = () => {
   const [ip, setIp] = useState('');
+
+  const handleChange = () => {
+
+  }
+
   const searchAddress = () => {
     setIp('190.113.209.244');
   };
@@ -23,7 +28,7 @@ const App = () => {
   return (
     <div>
       <Header>
-        <Search onClick={searchAddress} />
+        <Search onChange={handleChange} onClick={searchAddress} />
         <Card />
       </Header>
       <Map ip={ip} />
