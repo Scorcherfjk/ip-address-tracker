@@ -15,33 +15,42 @@ const App = () => {
     regionName: '',
     timezone: '',
     isp: '',
-    lat: 0,
-    lon: 0,
+    lat: -12.0621,
+    lon: -77.0362,
   });
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    setIp(e.target.value);
+  };
 
-  const searchAddress = () => {
-    fetch(`http://ip-api.com/json/${ip}`)
-      .then((res) => res.json())
-      .then((data) => setGeo(data));
+  const searchAddress = async () => {
+    const res = await fetch(`http://ip-api.com/json/${ip}`);
+    const data = await res.json();
+    setGeo(data);
   };
 
   useEffect(() => {
-    fetch('https://api.ipify.org/?format=json')
-      .then((res) => res.json())
-      .then((data) => setIp(data.ip));
+    const getData = async () => {
+      const resIp = await fetch('https://api.ipify.org/?format=json');
+      const dataIp = await resIp.json();
+      setIp(dataIp.ip);
+
+      const resGeo = await fetch(`http://ip-api.com/json/${ip}`);
+      const dataGeo = await resGeo.json();
+      setGeo(dataGeo);
+    };
+    getData();
   }, []);
 
   return (
-    <div>
+    <>
       <Header>
-        <Search onChange={handleChange} onClick={searchAddress} />
+        <Search value={ip} onChange={handleChange} onClick={searchAddress} />
         <Card geo={geo} />
       </Header>
-      <Map lat={geo.lat} lon={geo.lon} />
+      <Map geo={geo} />
       <Footer />
-    </div>
+    </>
   );
 };
 
