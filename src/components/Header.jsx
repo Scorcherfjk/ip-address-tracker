@@ -1,10 +1,10 @@
 import React from 'react';
+import '../assets/style/Header.scss';
 
 const Header = ({ children }) => (
-  <div>
-    <p>Header</p>
+  <header className="header">
     {children}
-  </div>
+  </header>
 );
 
 export default Header;

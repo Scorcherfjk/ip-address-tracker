@@ -10,13 +10,21 @@ import '../assets/style/App.scss';
 
 const App = () => {
   const [ip, setIp] = useState('');
+  const [geo, setGeo] = useState({
+    country: '',
+    regionName: '',
+    timezone: '',
+    isp: '',
+    lat: 0,
+    lon: 0,
+  });
 
-  const handleChange = () => {
-
-  }
+  const handleChange = () => {};
 
   const searchAddress = () => {
-    setIp('190.113.209.244');
+    fetch(`http://ip-api.com/json/${ip}`)
+      .then((res) => res.json())
+      .then((data) => setGeo(data));
   };
 
   useEffect(() => {
@@ -29,9 +37,9 @@ const App = () => {
     <div>
       <Header>
         <Search onChange={handleChange} onClick={searchAddress} />
-        <Card />
+        <Card geo={geo} />
       </Header>
-      <Map ip={ip} />
+      <Map lat={geo.lat} lon={geo.lon} />
       <Footer />
     </div>
   );
