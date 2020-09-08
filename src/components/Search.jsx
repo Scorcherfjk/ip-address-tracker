@@ -1,9 +1,14 @@
 import React from 'react';
 import '../assets/style/Search.scss';
 
-const Search = ({ value, onClick, onChange }) => (
+const Search = ({ onClick, onChange }) => (
   <div className="search">
-    <input value={value} onChange={onChange} className="search__input" type="text" />
+    <input
+      onChange={onChange}
+      className="search__input"
+      type="text"
+      placeholder="Insert any IP Address or domain"
+    />
     <button onClick={onClick} className="search__button" type="button">
       &#x276f;
     </button>

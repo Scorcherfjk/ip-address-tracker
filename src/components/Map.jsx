@@ -17,6 +17,7 @@ const Map = ({ geo }) => {
       zoom: 15.5,
     });
 
+    new mapboxgl.Marker().setLngLat([geo.lon, geo.lat]).addTo(map);
     map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
     // clean up on unmount

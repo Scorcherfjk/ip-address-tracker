@@ -3,7 +3,7 @@ import '../assets/style/Header.scss';
 
 const Header = ({ children }) => (
   <header className="header">
-    <h4>IP Address Tracker</h4>
+    <h1>IP Address Tracker</h1>
     {children}
   </header>
 );

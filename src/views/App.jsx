@@ -45,7 +45,7 @@ const App = () => {
   return (
     <>
       <Header>
-        <Search value={ip} onChange={handleChange} onClick={searchAddress} />
+        <Search onChange={handleChange} onClick={searchAddress} />
         <Card geo={geo} />
       </Header>
       <Map geo={geo} />
