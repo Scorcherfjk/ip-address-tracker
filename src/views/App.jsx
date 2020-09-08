@@ -11,12 +11,12 @@ import '../assets/style/App.scss';
 const App = () => {
   const [ip, setIp] = useState('');
   const [geo, setGeo] = useState({
-    country: '',
-    regionName: '',
+    city: '',
+    region: '',
     timezone: '',
-    isp: '',
-    lat: -12.0621,
-    lon: -77.0362,
+    org: '',
+    latitude: 0,
+    longitude: 0,
   });
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const App = () => {
   };
 
   const searchAddress = async () => {
-    const res = await fetch(`http://ip-api.com/json/${ip}`);
+    const res = await fetch(`https://ipapi.co/${ip}/json/`);
     const data = await res.json();
     setGeo(data);
   };
@@ -35,7 +35,7 @@ const App = () => {
       const dataIp = await resIp.json();
       setIp(dataIp.ip);
 
-      const resGeo = await fetch(`http://ip-api.com/json/${ip}`);
+      const resGeo = await fetch(`https://ipapi.co/${ip}/json/`);
       const dataGeo = await resGeo.json();
       setGeo(dataGeo);
     };

@@ -7,7 +7,7 @@ const Search = ({ onClick, onChange }) => (
       onChange={onChange}
       className="search__input"
       type="text"
-      placeholder="Insert any IP Address or domain"
+      placeholder="Search for any IP Address"
     />
     <button onClick={onClick} className="search__button" type="button">
       &#x276f;

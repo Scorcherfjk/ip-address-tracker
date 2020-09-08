@@ -13,11 +13,11 @@ const Map = ({ geo }) => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [geo.lon, geo.lat],
+      center: [geo.longitude, geo.latitude],
       zoom: 15.5,
     });
 
-    new mapboxgl.Marker().setLngLat([geo.lon, geo.lat]).addTo(map);
+    new mapboxgl.Marker().setLngLat([geo.longitude, geo.latitude]).addTo(map);
     map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
     // clean up on unmount
