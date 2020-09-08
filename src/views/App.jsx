@@ -24,20 +24,28 @@ const App = () => {
   };
 
   const searchAddress = async () => {
-    const res = await fetch(`https://ipapi.co/${ip}/json/`);
-    const data = await res.json();
-    setGeo(data);
+    try {
+      const res = await fetch(`https://ipapi.co/${ip}/json/`);
+      const data = await res.json();
+      setGeo(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   useEffect(() => {
     const getData = async () => {
-      const resIp = await fetch('https://api.ipify.org/?format=json');
-      const dataIp = await resIp.json();
-      setIp(dataIp.ip);
+      try {
+        const resIp = await fetch('https://api.ipify.org/?format=json');
+        const dataIp = await resIp.json();
+        setIp(dataIp.ip);
 
-      const resGeo = await fetch(`https://ipapi.co/${ip}/json/`);
-      const dataGeo = await resGeo.json();
-      setGeo(dataGeo);
+        const resGeo = await fetch(`https://ipapi.co/${ip}/json/`);
+        const dataGeo = await resGeo.json();
+        setGeo(dataGeo);
+      } catch (error) {
+        console.log(error.message);
+      }
     };
     getData();
   }, []);
