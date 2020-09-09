@@ -27,6 +27,7 @@ const App = () => {
     try {
       const res = await fetch(`https://ipapi.co/${ip}/json/`);
       const data = await res.json();
+      if (data.error) throw new Error('ip incorrecta');
       setGeo(data);
     } catch (error) {
       console.log(error.message);
